@@ -38,7 +38,7 @@ struct TestStruct<'a> {
     unlabeled: i32,
 }
 ``` 
-The macro will generate corresponding functions according to the labels automaticly.
+The macro will generate corresponding functions according to the labels automatically.
 ``` Rust
 fn main() {
     let test_struct = TestStruct {
