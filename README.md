@@ -15,7 +15,7 @@ and then
 at the root crate.
 
 # Example
-Just simply derive like 
+Just simply derive and label fields like
 ``` Rust
 #[derive(SerializeToMaps)]
 struct TestStruct<'a> {
@@ -38,7 +38,7 @@ struct TestStruct<'a> {
     unlabeled: i32,
 }
 ``` 
-The macro will generate corresponding functions automately.
+The macro will generate corresponding functions according to the labels automaticly.
 ``` Rust
 fn main() {
     let test_struct = TestStruct {
