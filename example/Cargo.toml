@@ -1,0 +1,9 @@
+[package]
+name = "example"
+version = "0.1.0"
+authors = ["HuXingYu <huxingyu@shimo.com>"]
+edition = "2018"
+
+[dependencies]
+
+serialize_to_maps = {path = "../"}
