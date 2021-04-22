@@ -39,7 +39,7 @@ fn main() {
         num: 2014.,
         string: "Shimo".to_string(),
         string_opt: Some("WenDang".to_string()),
-        string_opt_sec: None, 
+        string_opt_sec: None, // None will not be serialize
         str_ref : "shi mo wen dang",
         structure: WithToStringMethod::default(),
         structure_opt: WithToStringMethod::default(),
@@ -48,5 +48,5 @@ fn main() {
     let map_1 = test_struct.to_my_map();
     let map_2 = test_struct.to_another_map();
     println!("map1 => {:?}", map_1);
-    println!("map2 => {:#?}", map_2);
+    println!("map2 => {:?}", map_2);
 }

@@ -6,4 +6,4 @@ edition = "2018"
 
 [dependencies]
 
-serialize_to_maps = {path = "../"}
+serialize_to_maps = { version = "0.1",  git = "https://github.com/huxy11/serialize_to_maps.git"}
