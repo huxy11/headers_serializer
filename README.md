@@ -1,7 +1,6 @@
 # Serialize to Maps
 A handy tool specializing in serializing Rust data structures into HashMap(maybe more if necessary) which is based on Rust's #[derive] mechanism, just like what you would use to automatically derive implementations of the built-in Clone, Copy, Debug, or other traits. It is able to generate implementations for most structs as long as all the fields(or wrapped value, for options) have the to_string() methods.
 
-<<<<<<< Updated upstream
 # Usage
 add
 ``` 
@@ -63,15 +62,3 @@ Out put
 map1 => {"num": "2014", "string-opt": "WenDang", "str-ref": "shi mo wen dang", "string": "Shimo"}
 map2 => {"structure-opt": "石墨文档", "structure": "石墨文档"}
 ```
-=======
-## Usage
-add ```serialize_to_maps = { version = "0.1", git = "https://github.com/huxy11/serialize_to_maps.git"}``` in Cargo.toml
-and 
-``` Rust
-    #[macro_use] 
-    extern crate serialize_to_maps; 
-``` 
-at the root crate
-
-
->>>>>>> Stashed changes
