@@ -1,18 +1,28 @@
-# Serialize to Maps
-A handy tool specializing in serializing Rust data structures into HashMap(maybe more if necessary) which is based on Rust's ```#[derive]``` mechanism, just like what you would use to automatically derive implementations of the built-in Clone, Copy, Debug, or other traits. It is able to generate implementations for most structs as long as all the fields(or wrapped value, for options) have the ```to_string()``` methods.
+# Headers Serializer
+A lightweight crate specialized in serializing Http headers which is based on Rust's ```#[derive]``` mechanism. Usage is as simple as other built-in derive traits like Clone, Copy and Debug. 
+It is also capable of serializing most rust structs as long as all the fields(or wrapped values) within have the ```to_string()``` methods.
 
 # Usage
-add
+Add
 ``` 
-    serialize_to_maps = { version = "0.1", git = "https://github.com/huxy11/serialize_to_maps.git"}
+    headers_serializer = { version = "0.1", git = "https://github.com/huxy11/headers_serializer.git"}
 ``` 
 in Cargo.toml
-and then
+and 
 ``` Rust
     #[macro_use] 
-    extern crate serialize_to_maps; 
+    extern crate headers_serializer; 
 ```    
 at the root crate.
+
+That's all we need to #[derive(ToMaps)] on our rust structs, or in most scenario, headers.
+
+# Details
+#[derive(ToMaps)] will automatically generate ```to_$LABEL()``` method onto the struct for each $LABEL defined above the strut's fields.
+
+```to_$LABEL()``` method returns a HashMap contains all key-value paris labeled with corresponding name in which key is the filed name with all '_' replaced by '-'.
+
+Option::Some(T) is serialized as T meanwhile Option::None will not be serialized and inserted into maps. 
 
 # Example
 Just simply derive and label fields like
@@ -62,3 +72,4 @@ Out put
 map1 => {"num": "2014", "string-opt": "WenDang", "str-ref": "shi mo wen dang", "string": "Shimo"}
 map2 => {"structure-opt": "石墨文档", "structure": "石墨文档"}
 ```
+

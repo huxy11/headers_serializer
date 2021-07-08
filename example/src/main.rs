@@ -1,9 +1,8 @@
 #[macro_use]
-extern crate serialize_to_maps;
+extern crate headers_serializer;
 
 #[allow(dead_code)]
-
-#[derive(SerializeToMaps)]
+#[derive(ToMaps)]
 struct TestStruct<'a> {
     #[label("my_map")]
     num: f64,
@@ -12,7 +11,7 @@ struct TestStruct<'a> {
     #[label("my_map")]
     string_opt: Option<String>,
     #[label("my_map")]
-    string_opt_sec: Option<String>, 
+    string_opt_sec: Option<String>,
     #[label("my_map")]
     str_ref: &'a str,
 
@@ -40,7 +39,7 @@ fn main() {
         string: "Shimo".to_string(),
         string_opt: Some("WenDang".to_string()),
         string_opt_sec: None, // None will not be serialize
-        str_ref : "shi mo wen dang",
+        str_ref: "shi mo wen dang",
         structure: WithToStringMethod::default(),
         structure_opt: WithToStringMethod::default(),
         unlabeled: 56,

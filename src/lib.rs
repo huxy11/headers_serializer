@@ -10,7 +10,7 @@ use syn::Type;
 
 mod utils;
 
-#[proc_macro_derive(SerializeToMaps, attributes(label))]
+#[proc_macro_derive(ToMaps, attributes(label))]
 pub fn serialize_to_maps(input: TokenStream) -> TokenStream {
     // Parse the input tokens into a syntax tree.
     let input = parse_macro_input!(input as DeriveInput);
@@ -22,7 +22,7 @@ pub fn serialize_to_maps(input: TokenStream) -> TokenStream {
     let mut ret = quote! {};
 
     // TODO: 这里按道理只需要遍历一次 input.data。 但现在会遍历 map 数加一次。 不过这是编译期的步骤，不影响运行时性能，问题不大。
-    
+
     // 先遍历找出调用者打了多少个 Labels 。对每个 Label 都生成一个相应的 to_xxx 方法。 调用既可得到HashMap。
     maps(&input.data).into_iter().for_each(|map_name| {
         let insert_maps = insert_maps(&input.data, &map_name);
@@ -123,25 +123,3 @@ fn is_option(f: &syn::Field) -> bool {
         false
     }
 }
-// pub(crate) fn insert_params(data: &Data) -> quote::__private::TokenStream {
-//     let mut ret = quote! {};
-//     if let Data::Struct(ref data) = data {
-//         if let Fields::Named(ref fields) = data.fields {
-//             fields.named.iter().for_each(|f| {
-//                 let name = &f.ident;
-//                 let attrs = utils::the_first_attr(f, "label");
-//                 if attrs.is_some() && attrs.unwrap() == "param" {
-//                 ret.extend(quote! {
-//                     if let Some(_val) = &self.#name {
-//                             query_params.insert(stringify!(#name).to_ascii_lowercase().to_string(), Some(_val.to_string()));
-//                     }
-//                 })}
-//             });
-//         } else {
-//             panic!("Fields should have names.")
-//         }
-//     } else {
-//         panic!("This macro could not be used on types other than struct.")
-//     }
-//     ret
-// }
