@@ -1,6 +1,6 @@
 # Headers Serializer
 A lightweight crate specialized in serializing Http headers which is based on Rust's ```#[derive]``` mechanism. Usage is as simple as other built-in derive traits like Clone, Copy and Debug. 
-It is also capable of serializing most rust structs as long as all the fields(or wrapped values) within have the ```to_string()``` methods.
+It is also capable of serializing most rust structs as long as all the fields(or wrapped values) within have the ```to_string()``` method.
 
 # Usage
 Add
@@ -55,7 +55,7 @@ fn main() {
         num: 2014.,
         string: "Shimo".to_string(),
         string_opt: Some("WenDang".to_string()),
-        string_opt_sec: None, // None will not be serialize
+        string_opt_sec: None, // None will not be serialized
         str_ref : "shi mo wen dang",
         structure: WithToStringMethod::default(),
         structure_opt: WithToStringMethod::default(),
